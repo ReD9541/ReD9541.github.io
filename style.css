@@ -32,16 +32,6 @@ h2 {
     margin-top: 20px;
 }
 
-h3 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
 p {
     line-height: 1.6;
 }
@@ -50,6 +40,39 @@ img {
     max-width: 100%;
     height: auto;
     margin: 10px 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+ul li a {
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #003d80;
 }
 
 footer {
