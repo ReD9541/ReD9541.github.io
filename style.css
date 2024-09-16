@@ -1,37 +1,35 @@
 /* Global Styles */
-body {
-    font-family: 'Poppins', sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: #f4f4f4;
     color: #333;
-    transition: background-color 0.3s;
 }
 
-header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-    transition: background-color 0.3s ease-in-out;
-}
-
-header h1 {
-    font-size: 2.5em;
-    animation: fadeInDown 1.5s ease;
-}
-
-header p {
-    font-size: 1.2em;
-    animation: fadeIn 2s ease;
-}
-
+/* Main Content */
 main {
+    flex: 1;
     padding: 20px;
     max-width: 900px;
     margin: 0 auto;
     background-color: white;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 60px; /* Reserve space for the footer */
+}
+
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fadeInDown 1.5s ease;
 }
 
 h2 {
@@ -40,12 +38,19 @@ h2 {
     font-size: 1.8em;
     border-bottom: 2px solid #4CAF50;
     padding-bottom: 10px;
+    text-align: center;
+}
+
+p {
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 ul {
     list-style-type: none;
     padding: 0;
-    margin-top: 20px;
+    text-align: center;
 }
 
 ul li {
@@ -66,7 +71,6 @@ ul li a:hover {
 }
 
 #fun-section {
-    margin-top: 40px;
     text-align: center;
 }
 
@@ -85,20 +89,17 @@ ul li a:hover {
     background-color: #388E3C;
 }
 
+/* Footer */
 footer {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 15px 0;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
 }
 
 @keyframes fadeInDown {
@@ -109,5 +110,38 @@ footer {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    ul li a {
+        font-size: 1.1em;
+    }
+
+    #fun-section button {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    ul li a {
+        font-size: 1em;
     }
 }
