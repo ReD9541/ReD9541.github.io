@@ -25,7 +25,7 @@ main {
 /* Title section with background image */
 #title-section {
     position: relative;
-    background-image: url('blog/images/background-image.jpg');
+    background-image: url('https://github.com/ReD9541/ReD9541.github.io/blog/images/background-image.jpg');
     background-size: cover;
     background-position: center;
     padding: 100px 20px;
