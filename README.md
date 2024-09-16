@@ -1,2 +1,2 @@
-# ReD9541.github.io
+# Ritesh's Blog Post
 To post blogs
