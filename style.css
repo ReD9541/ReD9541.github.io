@@ -8,6 +8,7 @@
 /* Set global font styles and ensure the body stretches to fill the viewport */
 body {
     font-family: 'Poppins', sans-serif;
+    text-align: left;
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6; /* Improves text readability */
