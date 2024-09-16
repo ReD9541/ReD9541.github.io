@@ -3,23 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - DES1013 Blog</title>
+    <title>Home</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script> <!-- Link to the JavaScript file -->
 </head>
 <body>
     <main>
-        <section id="intro">
-            <h1>Welcome to My DES1013 Blog</h1>
-            <p id="welcome-text">Bringing you insights into digital images and copyright regulations.</p>
+        <!-- Title Section with background image -->
+        <section id="title-section">
+            <h1>Bringing you insights into digital images and copyright regulations</h1>
         </section>
 
+        <!-- Blog Posts Section -->
         <section id="blog-list">
             <h2>Explore My Blog Posts</h2>
-            <ul>
-                <li><a href="blog1.html" class="blog-link">Blog 1: Image Types and Tools</a></li>
-                <li><a href="blog2.html" class="blog-link">Blog 2: Image Regulations</a></li>
-            </ul>
+            <!-- Horizontal division for blog posts -->
+            <div class="blog-container">
+                <article class="blog-post">
+                    <img src="images/image-types-tools.jpg" alt="Image Types and Tools" class="blog-image">
+                    <h3><a href="blog1.html" class="blog-link">Blog 1: Image Types and Tools</a></h3>
+                </article>
+
+                <article class="blog-post">
+                    <img src="images/image-regulations.jpg" alt="Image Regulations" class="blog-image">
+                    <h3><a href="blog2.html" class="blog-link">Blog 2: Image Regulations</a></h3>
+                </article>
+            </div>
         </section>
 
         <section id="fun-section">
