@@ -141,6 +141,48 @@ footer {
     left: 0;
 }
 
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px; /* Adds spacing between images */
+}
+
+.image-container img {
+    width: 600px; /* Sets a fixed width */
+    height: 400px; /* Sets a fixed height */
+    object-fit: cover; /* Ensures the image maintains its aspect ratio and doesn't distort */
+    border-radius: 8px; /* Optional: adds rounded corners for a more modern look */
+    margin-bottom: 10px; /* Adds space between the image and caption */
+}
+
+.image-container p {
+    text-align: center;
+    font-weight: bold;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 80px; /* Adds space between the button and footer */
+}
+
+.back-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #388E3C; /* Darker green on hover */
+}
+
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
     .blog-container {
