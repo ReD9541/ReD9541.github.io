@@ -1,147 +1,150 @@
-/* Global Styles */
+/* Basic reset to remove default margins and padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Set global font styles and ensure the body stretches to fill the viewport */
 body {
     font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
     background-color: #f4f4f4;
     color: #333;
+    line-height: 1.6; /* Improves text readability */
+    display: flex;
+    flex-direction: column; /* Ensures the footer stays at the bottom */
+    min-height: 100vh; /* Full viewport height */
 }
 
-/* Main Content */
+/* Main container for content with padding and max width to avoid stretching */
 main {
-    flex: 1;
-    padding: 20px;
-    max-width: 900px;
+    flex: 1; /* Main content takes up available space */
+    padding: 40px 20px; /* Spacious padding for better layout */
+    max-width: 1200px; /* Limit content width for large screens */
     margin: 0 auto;
     background-color: white;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 60px; /* Reserve space for the footer */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-bottom: 80px; /* Space for the footer */
 }
 
+/* Add space between sections */
+section {
+    margin-bottom: 40px; /* Keeps sections well-separated */
+}
+
+/* Style for main heading */
+h1, h2 {
+    text-align: center; /* Center the headings */
+    margin-bottom: 20px; /* Adds spacing below headings */
+}
+
+/* Larger font size for the main title */
 h1 {
-    font-size: 2.5em;
-    text-align: center;
-    margin-bottom: 20px;
-    animation: fadeInDown 1.5s ease;
+    font-size: 3em; /* Standout size for the main header */
+    margin-bottom: 30px; /* More space below the main title */
 }
 
+/* Section heading styling */
 h2 {
-    color: #333;
-    margin-top: 20px;
-    font-size: 1.8em;
-    border-bottom: 2px solid #4CAF50;
-    padding-bottom: 10px;
-    text-align: center;
+    font-size: 2em; /* Large but smaller than main heading */
+    color: #4CAF50; /* Consistent color theme */
 }
 
+/* Text styling for paragraphs */
 p {
-    line-height: 1.6;
-    text-align: center;
-    margin-bottom: 20px;
+    font-size: 1.2em; /* Easy-to-read font size */
+    text-align: center; /* Center the text */
+    margin-bottom: 30px; /* Spacing below paragraphs */
 }
 
+/* Remove default list styles and center the list */
 ul {
     list-style-type: none;
     padding: 0;
     text-align: center;
 }
 
+/* Add space between list items */
 ul li {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Separates list items for readability */
 }
 
+/* Styling for links */
 ul li a {
-    color: #4CAF50;
+    color: #4CAF50; /* Consistent brand color */
     font-weight: bold;
-    text-decoration: none;
-    font-size: 1.2em;
-    transition: color 0.3s ease;
+    font-size: 1.5em; /* Increase link size */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth hover effect */
 }
 
+/* Hover effect for links */
 ul li a:hover {
-    color: #388E3C;
-    text-decoration: underline;
+    color: #388E3C; /* Darker green on hover */
+    text-decoration: underline; /* Visual cue on hover */
 }
 
-#fun-section {
-    text-align: center;
-}
-
+/* Button styling in the fun fact section */
 #fun-section button {
-    padding: 10px 20px;
+    padding: 15px 30px; /* Larger padding for a bigger button */
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 1em;
+    border-radius: 5px; /* Smooth, rounded corners */
+    font-size: 1.2em; /* Larger font for better visibility */
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s; /* Smooth transition on hover */
+    margin-top: 20px; /* Space above the button */
 }
 
+/* Hover effect for buttons */
 #fun-section button:hover {
-    background-color: #388E3C;
+    background-color: #388E3C; /* Darker green on hover */
 }
 
-/* Footer */
+/* Footer styling - fixed at the bottom */
 footer {
-    background-color: #333;
+    background-color: #333; /* Dark background for contrast */
     color: white;
     text-align: center;
-    padding: 15px 0;
-    width: 100%;
-    position: fixed;
+    padding: 20px 0; /* Spacious padding for readability */
+    width: 100%; /* Full width */
+    position: fixed; /* Fixed at the bottom */
     bottom: 0;
     left: 0;
-    z-index: 10;
+    z-index: 10; /* Ensure it's on top of other elements */
 }
 
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive Design */
+/* Responsive adjustments for tablets */
 @media (max-width: 768px) {
     main {
-        padding: 10px;
+        padding: 20px; /* Reduce padding on smaller screens */
     }
 
     h1 {
-        font-size: 2em;
+        font-size: 2em; /* Adjust heading size for readability */
     }
 
     ul li a {
-        font-size: 1.1em;
+        font-size: 1.3em; /* Slightly smaller links for tablets */
     }
 
     #fun-section button {
-        font-size: 0.9em;
+        font-size: 1.1em; /* Adjust button size */
     }
 }
 
+/* Responsive adjustments for mobile devices */
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.5em;
+        font-size: 1.5em; /* Smaller headings on mobile */
     }
 
     h2 {
-        font-size: 1.5em;
+        font-size: 1.5em; /* Adjusted section headings */
     }
 
     ul li a {
-        font-size: 1em;
+        font-size: 1.2em; /* Smaller links for mobile */
     }
 }
