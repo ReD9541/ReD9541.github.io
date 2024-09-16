@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const factButton = document.getElementById('fact-button');
-    const factText = document.getElementById('fact-text');
+    const factButton = document.getElementById("fact-button");
+    const factText = document.getElementById("fact-text");
     const facts = [
         "Did you know? Vector art can be scaled infinitely without losing quality!",
         "Copyright lasts for the life of the author plus 70 years.",
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Did you know? The Pen tool in Illustrator creates vector paths that can be adjusted infinitely."
     ];
 
-    factButton.addEventListener('click', () => {
+    factButton.addEventListener("click", () => {
         const randomFact = facts[Math.floor(Math.random() * facts.length)];
         factText.textContent = randomFact;
     });

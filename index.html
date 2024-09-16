@@ -1,46 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script> <!-- Link to the JavaScript file -->
-</head>
-<body>
-    <main>
-        <!-- Title Section with background image -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My GitHub Projects</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- Title Section with Background Image -->
         <section id="title-section">
-            <h1>Bringing you insights into digital images and copyright regulations</h1>
+            <h1>Welcome to My GitHub Projects</h1>
+            <p>Explore my projects and blogs below.</p>
         </section>
 
-        <!-- Blog Posts Section -->
-        <section id="blog-list">
-            <h2>Explore My Blog Posts</h2>
-            <!-- Horizontal division for blog posts -->
-            <div class="blog-container">
-                <article class="blog-post">
-                    <img src="images/image-types-tools.jpg" alt="Image Types and Tools" class="blog-image">
-                    <h3><a href="blog1.html" class="blog-link">Blog 1: Image Types and Tools</a></h3>
-                </article>
+        <main>
+            <!-- Projects Section -->
+            <section id="projects">
+                <h2>My Projects</h2>
+                <div class="project-container">
+                    <div class="project-item">
+                        <img src="images/Movie_project.jpg" alt="Movie Project" class="project-image" />
+                        <a href="https://github.com/ReD9541/Movie_project" class="project-link" target="_blank"
+                            >Project 1: Movie Project</a
+                        >
+                        <p>Basic Side Project, Uses C# winform and MySQL queries.</p>
+                    </div>
 
-                <article class="blog-post">
-                    <img src="images/image-regulations.jpg" alt="Image Regulations" class="blog-image">
-                    <h3><a href="blog2.html" class="blog-link">Blog 2: Image Regulations</a></h3>
-                </article>
-            </div>
-        </section>
+                    <div class="project-item">
+                        <img src="images/cloud-apps.png" alt="CLOUD APPLICATION" class="project-image" />
+                        <a href="https://github.com/ReD9541/Cloud-application" class="project-link" target="_blank"
+                            >Project 2: Cloud Application</a
+                        >
+                        <p>This repository is to save my Assessment for Enterprise system</p>
+                    </div>
+                </div>
+            </section>
 
-        <section id="fun-section">
-            <h2>Fun Fact</h2>
-            <p id="fact-text">Click the button to reveal a fun fact!</p>
-            <button id="fact-button">Show Fun Fact</button>
-        </section>
-    </main>
+            <!-- Blog Section -->
+            <section id="blogs">
+                <h2>My Blogs</h2>
+                <div class="blog-container">
+                    <div class="blog-post">
+                        <img src="blog/images/blog-thumbnail.png" alt="Blogs Thumbnail" class="blog-image" />
+                        <a href="blog/Blog-assessment.html" class="blog-link">Assessment Blogs</a>
+                        <p>A detailed exploration of image types, tools, and techniques used in digital design.</p>
+                    </div>
 
-    <footer>
-        <p>&copy; 2024 | DES1013 Assessment</p>
-        <p>By Ritesh Dhungel</p>
-    </footer>
-</body>
+                    <div class="blog-post">
+                        <img src="blog/images/blog-coming-soon.png" alt="Blogs Thumbnail" class="blog-image" />
+                        <a href="blog/Blog-assessment.html" class="blog-link">Coming Soon</a>
+                        <p>A new Blog coming soon</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 | My GitHub Portfolio</p>
+            <p>Follow me on <a href="https://github.com/username" target="_blank">GitHub</a></p>
+        </footer>
+    </body>
 </html>
