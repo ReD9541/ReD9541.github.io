@@ -194,8 +194,8 @@ footer {
 }
 
 .image-container img {
-    width: 600px; /* Sets a fixed width */
-    height: 400px; /* Sets a fixed height */
+    width: 500px; /* Sets a fixed width */
+    height: 345px; /* Sets a fixed height */
     object-fit: cover; /* Ensures the image maintains its aspect ratio and doesn't distort */
     border-radius: 8px; /* Optional: adds rounded corners for a more modern look */
     margin-bottom: 10px; /* Adds space between the image and caption */
