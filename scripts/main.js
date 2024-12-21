@@ -17,18 +17,16 @@ async function fetchReadme(username, repoName) {
   }
 }
 
-
 fetch(`https://api.github.com/users/${username}/repos`)
   .then(response => response.json())
   .then(async repos => {
     for (const repo of repos) {
-      const readmeContent = await fetchReadme(username, repo.name); 
+      const readmeContent = await fetchReadme(username, repo.name); // Fetch README content
 
       const card = document.createElement('div');
       card.classList.add('col-md-6');
       card.innerHTML = `
         <div class="card h-100">
-          <img src="${repo.owner.avatar_url}" class="card-img-top" alt="${repo.name}">
           <div class="card-body">
             <h5 class="card-title">${repo.name}</h5>
             <p class="card-text">${readmeContent}</p>
@@ -44,8 +42,7 @@ fetch(`https://api.github.com/users/${username}/repos`)
     projectContainer.innerHTML = `<p class="text-danger text-center">Failed to load projects.</p>`;
   });
 
-
-
+// Load Header and Footer
 fetch('header.html')
   .then(res => res.text())
   .then(content => {
