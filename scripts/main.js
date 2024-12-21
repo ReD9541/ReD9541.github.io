@@ -1,5 +1,5 @@
-// Fetch GitHub repositories and dynamically populate project cards
-const username = 'ReD9541'; // Replace with your GitHub username
+
+const username = 'ReD9541'; 
 const projectContainer = document.getElementById('project-cards');
 
 // Function to fetch and decode README.md content
@@ -9,20 +9,20 @@ async function fetchReadme(username, repoName) {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`README not found for ${repoName}`);
     const data = await response.json();
-    const decodedContent = atob(data.content); // Decode base64 content
-    return decodedContent.substring(0, 200) + '...'; // Limit to 200 characters
+    const decodedContent = atob(data.content);
+    return decodedContent.substring(0, 200) + '...'; 
   } catch (error) {
     console.error(error);
     return 'No description available.';
   }
 }
 
-// Fetch repositories and display them
+
 fetch(`https://api.github.com/users/${username}/repos`)
   .then(response => response.json())
   .then(async repos => {
     for (const repo of repos) {
-      const readmeContent = await fetchReadme(username, repo.name); // Fetch README content
+      const readmeContent = await fetchReadme(username, repo.name); 
 
       const card = document.createElement('div');
       card.classList.add('col-md-6');
@@ -43,7 +43,7 @@ fetch(`https://api.github.com/users/${username}/repos`)
     projectContainer.innerHTML = `<p class="text-danger text-center">Failed to load projects.</p>`;
   });
 
-// Load Header and Footer
+
 fetch('header.html')
   .then(res => res.text())
   .then(content => {
