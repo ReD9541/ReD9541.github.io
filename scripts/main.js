@@ -28,6 +28,7 @@ fetch(`https://api.github.com/users/${username}/repos`)
       card.classList.add('col-md-6');
       card.innerHTML = `
         <div class="card h-100">
+          <img src="${repo.owner.avatar_url}" class="card-img-top" alt="${repo.name}">
           <div class="card-body">
             <h5 class="card-title">${repo.name}</h5>
             <p class="card-text">${readmeContent}</p>
@@ -42,6 +43,7 @@ fetch(`https://api.github.com/users/${username}/repos`)
     console.error('Error fetching GitHub repositories:', error);
     projectContainer.innerHTML = `<p class="text-danger text-center">Failed to load projects.</p>`;
   });
+
 
 
 fetch('header.html')
