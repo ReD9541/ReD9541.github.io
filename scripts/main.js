@@ -1,28 +1,36 @@
-
-const username = 'ReD9541'; 
+const userName = 'ReD9541';
 const projectContainer = document.getElementById('project-cards');
+let cachedUserData = null;
 
 // Function to fetch and decode README.md content
-async function fetchReadme(username, repoName) {
-  const url = `https://api.github.com/repos/${username}/${repoName}/readme`;
+async function fetchReadme(userName, repoName) {
+  const url = `https://api.github.com/repos/${userName}/${repoName}/readme`;
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`README not found for ${repoName}`);
     const data = await response.json();
-    const decodedContent = atob(data.content);
-    return decodedContent.substring(0, 200) + '...'; 
+    const decodedContent = atob(data.content.replace(/-/g, '+').replace(/_/g, '/'));
+    return decodedContent.substring(0, 200) + '...'; // Limit to 200 characters
   } catch (error) {
-    console.error(error);
+    console.error(`Error fetching README for ${repoName}: ${error.message}`);
     return 'No description available.';
   }
 }
 
-fetch(`https://api.github.com/users/${username}/repos`)
-  .then(response => response.json())
-  .then(async repos => {
-    for (const repo of repos) {
-      const readmeContent = await fetchReadme(username, repo.name); // Fetch README content
+// Function to load repositories and display them dynamically
+async function loadRepositories(userName) {
+  try {
+    const response = await fetch(`https://api.github.com/users/${userName}/repos`);
+    if (!response.ok) throw new Error('Failed to fetch repositories');
+    const repos = await response.json();
 
+    if (!projectContainer) {
+      console.error('Project container not found');
+      return;
+    }
+
+    for (const repo of repos) {
+      const readmeContent = await fetchReadme(userName, repo.name); // Fetch README content
       const card = document.createElement('div');
       card.classList.add('col-md-6');
       card.innerHTML = `
@@ -36,21 +44,41 @@ fetch(`https://api.github.com/users/${username}/repos`)
       `;
       projectContainer.appendChild(card);
     }
-  })
-  .catch(error => {
-    console.error('Error fetching GitHub repositories:', error);
-    projectContainer.innerHTML = `<p class="text-danger text-center">Failed to load projects.</p>`;
-  });
+  } catch (error) {
+    console.error(`Error loading repositories: ${error.message}`);
+    if (projectContainer) {
+      projectContainer.innerHTML = `<p class="text-danger text-center">Failed to load projects.</p>`;
+    }
+  }
+}
 
-// Load Header and Footer
-fetch('header.html')
-  .then(res => res.text())
-  .then(content => {
-    document.getElementById('header-placeholder').innerHTML = content;
-  });
+// Function to load HTML fragments (header/footer)
+async function loadHtmlFragment(url, placeholderId) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Failed to load ${url}`);
+    const content = await response.text();
+    document.getElementById(placeholderId).innerHTML = content;
 
-fetch('footer.html')
-  .then(res => res.text())
-  .then(content => {
-    document.getElementById('footer-placeholder').innerHTML = content;
-  });
+    if (placeholderId === 'header-placeholder') {
+      if (!cachedUserData) {
+        const userData = await fetch(`https://api.github.com/users/${userName}`).then((res) => res.json());
+        cachedUserData = userData;
+      }
+      const avatarImg = document.getElementById('github-avatar');
+      if (avatarImg) {
+        avatarImg.src = cachedUserData.avatar_url;
+        avatarImg.alt = `${cachedUserData.login}'s avatar`;
+      }
+    }
+  } catch (error) {
+    console.error(`Error loading ${placeholderId}: ${error.message}`);
+  }
+}
+
+// Initialize the app
+document.addEventListener('DOMContentLoaded', () => {
+  loadHtmlFragment('header.html', 'header-placeholder');
+  loadHtmlFragment('footer.html', 'footer-placeholder');
+  loadRepositories(userName);
+});
