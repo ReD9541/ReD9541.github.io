@@ -1,12 +1,41 @@
-<header class="bg-white border-bottom shadow-sm">
+<header class="bg-white border-bottom shadow-sm" style="background: linear-gradient(90deg, #f0f2f5, #ffffff);">
   <div class="container d-flex flex-wrap align-items-center justify-content-between py-3">
-    <div class="d-flex align-items-center">
-      <img id="github-avatar" src="https://avatars.githubusercontent.com/u/9919" alt="Ritesh Dhungel GitHub Avatar" class="rounded-circle me-3" width="48" height="48" loading="lazy">
-      <span class="fs-5 fw-semibold text-dark">Ritesh Dhungel</span>
+    <div class="d-flex align-items-center gap-3">
+      <a href="https://github.com/ReD9541" target="_blank" rel="noopener noreferrer" class="d-flex align-items-center text-decoration-none">
+        <img
+          id="github-avatar"
+          src="https://avatars.githubusercontent.com/u/9919"
+          alt="Ritesh Dhungel GitHub Avatar"
+          class="rounded-circle border border-2 border-primary shadow-sm"
+          width="56"
+          height="56"
+          loading="lazy"
+          style="transition: transform 0.3s ease;"
+        />
+        <div class="ms-3">
+          <span class="fs-4 fw-bold text-dark d-block">Ritesh Dhungel</span>
+          <small class="text-muted fst-italic">Full Stack Developer & Open Source Enthusiast</small>
+        </div>
+      </a>
     </div>
-    <nav class="d-flex gap-2">
-      <a href="index.html" class="btn btn-outline-dark">Home</a>
-      <a href="https://github.com/ReD9541" target="_blank" rel="noopener noreferrer" class="btn btn-dark">GitHub</a>
+    <nav class="d-flex gap-3">
+      <a href="index.html" class="btn btn-outline-primary fw-semibold px-4" style="transition: background-color 0.3s, color 0.3s;">
+        Home
+      </a>
+      <a href="https://github.com/ReD9541" target="_blank" rel="noopener noreferrer" class="btn btn-primary fw-semibold px-4">
+        GitHub <i class="fab fa-github ms-2"></i>
+      </a>
     </nav>
   </div>
 </header>
+
+<script>
+  // Optional: Add a subtle hover zoom effect on avatar
+  const avatar = document.getElementById('github-avatar');
+  avatar.addEventListener('mouseenter', () => {
+    avatar.style.transform = 'scale(1.1)';
+  });
+  avatar.addEventListener('mouseleave', () => {
+    avatar.style.transform = 'scale(1)';
+  });
+</script>

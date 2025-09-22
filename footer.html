@@ -1,11 +1,32 @@
-<footer class="bg-dark text-white py-4">
+<footer class="bg-dark text-white py-4 border-top border-secondary">
   <div class="container text-center small">
-    <p class="mb-1">&copy; <span id="current-year"></span> Ritesh Dhungel</p>
+    <p class="mb-1">
+      &copy; <span id="current-year"></span> <strong>Ritesh Dhungel</strong>
+    </p>
     <p class="mb-0">
-      Follow on 
-      <a href="https://github.com/ReD9541" target="_blank" rel="noopener noreferrer" class="text-white text-decoration-underline fw-semibold">
-        GitHub
+      Follow me on 
+      <a href="https://github.com/ReD9541" target="_blank" rel="noopener noreferrer" 
+         class="text-white text-decoration-underline fw-semibold d-inline-flex align-items-center gap-1 hover-scale">
+        <i class="fab fa-github"></i> GitHub
       </a>
     </p>
   </div>
 </footer>
+
+<style>
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+  .hover-scale:hover,
+  .hover-scale:focus {
+    transform: scale(1.1);
+    text-decoration: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+  });
+</script>

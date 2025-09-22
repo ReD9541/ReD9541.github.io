@@ -1,208 +1,136 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  line-height: 1.6;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1;
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-#title-section {
+/* Card Container */
+.project-card {
+  perspective: 1000px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  height: 320px;
   position: relative;
-  background-image: url('images/background-image.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 100px 20px;
-  text-align: center;
-  color: white;
-  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#title-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+.project-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.project-card-inner {
+  position: relative;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: -1;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: 12px;
 }
 
-#title-section h1 {
-  position: relative;
-  font-size: 2.5em;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 2px;
+.project-card:hover .project-card-inner,
+.project-card:focus .project-card-inner {
+  transform: rotateY(180deg);
+  outline: none;
 }
 
-h2 {
-  text-align: center;
-  margin: 30px 0;
-  font-size: 2em;
-  color: #4CAF50;
-}
-
-.project-container,
-.blog-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: 50px;
-}
-
-.project-item,
-.blog-post {
-  background-color: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 10px;
-  width: calc(50% - 20px);
-  text-align: center;
-  transition: transform 0.3s;
-}
-
-.project-item:hover,
-.blog-post:hover {
-  transform: translateY(-10px);
-}
-
-.project-image,
-.blog-image {
+/* Card Faces */
+.project-card-front,
+.project-card-back {
+  position: absolute;
   width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
-.blog-image {
-  height: 250px;
-}
-
-.project-link,
-.blog-link {
-  display: block;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
   padding: 20px;
-  font-size: 1.5em;
-  color: #4CAF50;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background-color: #ffffff;
+  box-shadow: inset 0 0 0 1px #f0f0f0;
 }
 
-.project-link:hover,
-.blog-link:hover {
-  color: #388E3C;
+.project-card-front {
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-#blog-list {
-  margin-bottom: 50px;
+.project-card-back {
+  transform: rotateY(180deg);
+  background-color: #f8f9fa;
+  color: #222;
 }
 
-#fun-section {
-  text-align: center;
-  padding: 7px;
-  margin-top: 50px;
-  margin-bottom: 100px;
+/* Readme Styling */
+.project-card-back .readme-content {
+  max-height: 220px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #444;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f8f8f8;
 }
 
-#fact-button {
-  padding: 15px 30px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2em;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 15px;
+/* Webkit Scrollbars */
+.project-card-back .readme-content::-webkit-scrollbar {
+  width: 6px;
 }
 
-#fact-button:hover {
-  background-color: #388E3C;
+.project-card-back .readme-content::-webkit-scrollbar-track {
+  background: #f8f8f8;
 }
 
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-  width: 100%;
+.project-card-back .readme-content::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 6px;
+}
+
+/* Language Badge */
+.language-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Language-specific Colors */
+.language-JavaScript { background-color: #f7df1e; color: #000; }
+.language-Python { background-color: #3572A5; color: #fff; }
+.language-HTML { background-color: #e34c26; color: #fff; }
+.language-CSS { background-color: #264de4; color: #fff; }
+.language-TypeScript { background-color: #3178c6; color: #fff; }
+.language-Java { background-color: #b07219; color: #fff; }
+.language-Ruby { background-color: #701516; color: #fff; }
+.language-CPlusPlus { background-color: #f34b7d; color: #fff; }
+
+/* Fallback */
+.language-badge i { font-size: 1rem; }
+
+/* Button Styling Inside Cards */
+.project-card a.btn {
+  width: fit-content;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Project Stats (Stars/Forks) */
+.project-stats {
+  font-size: 0.8rem;
+  color: #666;
+  display: flex;
+  gap: 12px;
   margin-top: auto;
 }
 
-.image-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 40px;
-}
-
-.image-container img {
-  width: 100%;
-  max-width: 500px;
-  height: 345px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.image-container p {
-  text-align: center;
-  font-weight: bold;
-}
-
-.button-container {
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 80px;
-}
-
-.back-button {
-  display: inline-block;
-  padding: 15px 30px;
-  background-color: #4CAF50;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 1.2em;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-  background-color: #388E3C;
-}
-
-@media (max-width: 768px) {
-  .project-item,
-  .blog-post {
-    width: 100%;
-  }
-
-  .project-container,
-  .blog-container {
-    flex-direction: column;
-  }
-
-  .image-container img {
+/* Responsive Readme Shrink */
+@media (max-width: 767px) {
+  .project-card {
     height: auto;
+    min-height: 320px;
+  }
+  .project-card-back .readme-content {
+    max-height: 160px;
   }
 }

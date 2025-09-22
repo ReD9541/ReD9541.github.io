@@ -3,43 +3,61 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="description" content="Portfolio of Ritesh Dhungel – Showcasing GitHub projects, development work, and blogs." />
   <title>Ritesh Dhungel | GitHub Projects</title>
 
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- Markdown Renderer -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
+  <!-- Header (loaded via JS) -->
   <div id="header-placeholder"></div>
 
+  <!-- Hero Section -->
   <section class="bg-dark text-white text-center py-5">
     <div class="container">
       <h1 class="display-4 fw-bold">Welcome to My GitHub Projects</h1>
-      <p class="lead">Explore my software work, tools, and learning journey below.</p>
+      <p class="lead mb-0">Explore my software creations, tools, and open-source learning journey.</p>
     </div>
   </section>
 
+  <!-- Project Filter -->
   <main class="container my-5">
-    <section id="projects" class="mb-5">
+    <div id="controls" class="mb-4 d-flex justify-content-center">
+      <label for="filter-language" class="visually-hidden">Filter by language</label>
+      <select id="filter-language" class="form-select w-auto shadow-sm">
+        <option value="all">Filter by Language</option>
+      </select>
+    </div>
+
+    <!-- Projects Grid -->
+    <section id="projects">
       <h2 class="text-center fw-semibold mb-4">Featured Projects</h2>
       <div class="row g-4" id="project-cards"></div>
     </section>
   </main>
 
+  <!-- Footer (loaded via JS) -->
   <div id="footer-placeholder"></div>
 
-  <script src="scripts/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const yearSpan = document.getElementById('current-year');
-      if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-    });
-  </script>
+  <!-- JS -->
+  <script src="scripts/main.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
 </body>
 
 </html>
