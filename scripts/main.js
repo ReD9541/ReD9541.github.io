@@ -1,84 +1,83 @@
-const userName = 'ReD9541';
-const projectContainer = document.getElementById('project-cards');
-let cachedUserData = null;
+const githubUser = 'ReD9541';
+const projectsSection = document.getElementById('project-cards');
+let githubUserData = null;
 
-// Function to fetch and decode README.md content
-async function fetchReadme(userName, repoName) {
-  const url = `https://api.github.com/repos/${userName}/${repoName}/readme`;
+async function getReadmeSnippet(user, repo) {
+  const endpoint = `https://api.github.com/repos/${user}/${repo}/readme`;
+
   try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`README not found for ${repoName}`);
-    const data = await response.json();
-    const decodedContent = atob(data.content.replace(/-/g, '+').replace(/_/g, '/'));
-    return decodedContent.substring(0, 200) + '...'; // Limit to 200 characters
-  } catch (error) {
-    console.error(`Error fetching README for ${repoName}: ${error.message}`);
+    const res = await fetch(endpoint);
+    if (!res.ok) throw new Error(`README not found for ${repo}`);
+
+    const data = await res.json();
+    const decoded = atob(data.content.replace(/-/g, '+').replace(/_/g, '/'));
+
+    return decoded.slice(0, 200) + '...';
+  } catch {
     return 'No description available.';
   }
 }
 
-// Function to load repositories and display them dynamically
-async function loadRepositories(userName) {
+async function renderRepositories(user) {
   try {
-    const response = await fetch(`https://api.github.com/users/${userName}/repos`);
-    if (!response.ok) throw new Error('Failed to fetch repositories');
-    const repos = await response.json();
+    const res = await fetch(`https://api.github.com/users/${user}/repos`);
+    if (!res.ok) throw new Error('Could not fetch repositories');
 
-    if (!projectContainer) {
-      console.error('Project container not found');
-      return;
-    }
+    const repos = await res.json();
+    if (!projectsSection) return;
 
     for (const repo of repos) {
-      const readmeContent = await fetchReadme(userName, repo.name); // Fetch README content
-      const card = document.createElement('div');
-      card.classList.add('col-md-6');
-      card.innerHTML = `
+      const description = await getReadmeSnippet(user, repo.name);
+
+      const col = document.createElement('div');
+      col.classList.add('col-md-6');
+
+      col.innerHTML = `
         <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">${repo.name}</h5>
-            <p class="card-text">${readmeContent}</p>
+            <p class="card-text">${description}</p>
             <a href="${repo.html_url}" class="btn btn-primary" target="_blank">View Repository</a>
           </div>
         </div>
       `;
-      projectContainer.appendChild(card);
+
+      projectsSection.appendChild(col);
     }
-  } catch (error) {
-    console.error(`Error loading repositories: ${error.message}`);
-    if (projectContainer) {
-      projectContainer.innerHTML = `<p class="text-danger text-center">Failed to load projects.</p>`;
+  } catch {
+    if (projectsSection) {
+      projectsSection.innerHTML = `<p class="text-danger text-center">Unable to load repositories.</p>`;
     }
   }
 }
 
-// Function to load HTML fragments (header/footer)
-async function loadHtmlFragment(url, placeholderId) {
+async function loadFragment(path, targetId) {
   try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`Failed to load ${url}`);
-    const content = await response.text();
-    document.getElementById(placeholderId).innerHTML = content;
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`Failed to load ${path}`);
 
-    if (placeholderId === 'header-placeholder') {
-      if (!cachedUserData) {
-        const userData = await fetch(`https://api.github.com/users/${userName}`).then((res) => res.json());
-        cachedUserData = userData;
+    const html = await res.text();
+    document.getElementById(targetId).innerHTML = html;
+
+    if (targetId === 'header-placeholder') {
+      if (!githubUserData) {
+        const userRes = await fetch(`https://api.github.com/users/${githubUser}`);
+        githubUserData = await userRes.json();
       }
-      const avatarImg = document.getElementById('github-avatar');
-      if (avatarImg) {
-        avatarImg.src = cachedUserData.avatar_url;
-        avatarImg.alt = `${cachedUserData.login}'s avatar`;
+
+      const avatar = document.getElementById('github-avatar');
+      if (avatar) {
+        avatar.src = githubUserData.avatar_url;
+        avatar.alt = `${githubUserData.login}'s avatar`;
       }
     }
-  } catch (error) {
-    console.error(`Error loading ${placeholderId}: ${error.message}`);
+  } catch (err) {
+    console.error(`Fragment load failed for ${targetId}`);
   }
 }
 
-// Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
-  loadHtmlFragment('header.html', 'header-placeholder');
-  loadHtmlFragment('footer.html', 'footer-placeholder');
-  loadRepositories(userName);
+  loadFragment('header.html', 'header-placeholder');
+  loadFragment('footer.html', 'footer-placeholder');
+  renderRepositories(githubUser);
 });
